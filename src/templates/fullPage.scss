@@ -1,0 +1,41 @@
+@import '../components/header.scss';
+@import '../components/languageBar.scss';
+@import '../components/variables.scss';
+
+$full-page-width: 620px;
+
+.full-page-container {
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  padding-top: $header-height + $language-bar-height;
+
+  display: flex;
+  justify-content: center;
+}
+
+.full-page {
+  width: $full-page-width;
+  min-width: $full-page-width;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: $full-page-width + 16px) {
+  .full-page-container {
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (max-width: $min-width) {
+  .full-page-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-top: 0px;
+  }
+}

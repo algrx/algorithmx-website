@@ -1,0 +1,60 @@
+{
+  "name": "algorithmx-website",
+  "version": "1.0.0",
+  "description": "Website for AlgoriothmX.",
+  "private": true,
+  "author": {
+    "name": "Alex Socha"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run develop",
+    "develop": "node_modules/.bin/ts-node node_modules/.bin/gatsby develop",
+    "build": "node_modules/.bin/ts-node node_modules/.bin/gatsby build --prefix-paths",
+    "typecheck": "node_modules/typescript/bin/tsc --noEmit",
+    "lint": "node_modules/.bin/tslint --project .",
+    "test": "npm run typecheck && npm run lint"
+  },
+  "dependencies": {
+    "@babel/standalone": "^7.3.3",
+    "@fortawesome/fontawesome-free": "^5.7.2",
+    "algorithmx": "^1.0.0-beta.4",
+    "babel-plugin-prismjs": "^1.0.2",
+    "babel-preset-gatsby": "^0.1.7",
+    "domino": "^2.1.2",
+    "gatsby": "^2.0.0",
+    "gatsby-plugin-favicon": "^3.1.5",
+    "gatsby-plugin-meta-redirect": "^1.1.1",
+    "gatsby-plugin-react-helmet": "^3.0.6",
+    "gatsby-plugin-react-svg": "^2.0.0",
+    "gatsby-plugin-sass": "^2.0.10",
+    "gatsby-plugin-typescript": "^2.0.0",
+    "gatsby-source-filesystem": "^2.0.20",
+    "gatsby-transformer-json": "^2.1.8",
+    "gatsby-transformer-remark": "^2.2.4",
+    "js-yaml": "^3.12.1",
+    "node-sass": "^4.11.0",
+    "prismjs": "^1.15.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "ts-node": "^8.0.2"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^3.12.0",
+    "@types/node": "^10.12.0",
+    "@types/prismjs": "^1.9.1",
+    "@types/react": "^16.8.0",
+    "@types/react-dom": "^16.8.0",
+    "@types/react-helmet": "^5.0.8",
+    "@types/react-redux": "^7.0.1",
+    "gatsby-cli": "^2.4.10",
+    "tslint": "^5.10.0",
+    "tslint-config-standard": "^8.0.0",
+    "tslint-immutable": "^5.0.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.2.2"
+  }
+}

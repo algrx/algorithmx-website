@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+- stable
+
+cache:
+  directories:
+  - node_modules
+
+branches:
+  only:
+  - master
+
+install:
+- npm install
+
+jobs:
+  include:
+  - stage: deploy
+    script: "npm run build && node_modules/.bin/ts-node scripts/deploy.ts"
+
+env:
+  global:
+  - GITHUB_DEPLOY_REPO: "algrx/algrx.github.io"
+  # GITHUB_DEPLOY_TOKEN
+  - secure: "k2QgSFNynuUF8ehyX+aXTPguPuGhpRAMCMt7N4rSX7C9Lu8esF01nHGD1Casf9aesOuWUrXgAjaR4RlWtarEqXvSJ+M1NqHQmjXvJ+OZ2hJnEC1BJUDtFjrE4Rymyp+DB8W5kLMY02FKQOsg9XvpVVAOnVH+DCG27YBtXGxL5JXJDStq7M7yLROQ1xJDpRKJvdGeTtM4sJW8CYw7GB/Cq7y4g/FoKU9/SP+VGrGOG6OENPFTrPSNXN591XsQy+75BJJJZyZB6O5trvKFBfTb9x5VCYxzfovVYO7xwNUHYfyw4cw9MJ15aFFaZd99g1g4zvn489Tzp1B0Kj3/v7FanOXSKkIP+KK5C78CL6Sz7KpUgQLPscmSXF5FiOr6qQAA63dx9mFB9MlG/HXTRCp/zBM/uEG1C7qt1PTx4TTKBDRO8AyLklFou9XeQvwkEF5U4+QrZn/wh5k/sHy+XlvfORoYd66gDXHqAQbhDILHUmI1aYDv+exMYduPrQspdQwjyM+xc3nPzN1igGB+39q5htRFWpU6du/UHxlwHfLv7OXJ6WK8WBOZqqDOKvyFv4W2/AV/vuThMbeFMYZnpBJSsoKctV6W8y/c6oOKCDPKHvZJ/MO3ne2jO+lKBj3MDosHIqca7kBs8FKEqt2ztmBABvHHjfBbNic0pot1vYN3yn0="

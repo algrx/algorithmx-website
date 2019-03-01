@@ -1,0 +1,46 @@
+@import './variables';
+
+$toggle-btn-r: 6px;
+
+.toggle-btn {
+  width: 16px;
+  height: 16px;
+}
+
+.toggle-btn-svg {
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+
+.toggle-btn-circle {
+  cx: 8;
+  cy: 8;
+  r: $toggle-btn-r;
+  stroke-width: 1px;
+  stroke: $color-gray;
+  fill: none;
+
+  transition: r 0.2s ease-in;
+}
+
+.toggle-btn-overlay {
+  cx: 8;
+  cy: 8;
+  position: absolute;
+  fill: $color-primary;
+
+  r: 0;
+  transition: r 0.2s ease-out;
+}
+
+@mixin toggleBtnOn {
+  .toggle-btn-circle {
+    r: $toggle-btn-r - 1;
+    transition: r 0.2s ease-out;
+  }
+  .toggle-btn-overlay {
+    r: $toggle-btn-r;
+    transition: r 0.2s ease-in;
+  }
+}

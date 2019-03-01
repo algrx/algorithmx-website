@@ -1,0 +1,66 @@
+@import '../components/header.scss';
+@import '../components/languageBar.scss';
+@import '../components/toc/toc.scss';
+@import '../components/api/page.scss';
+@import '../components/variables.scss';
+
+$toc-width: 200px;
+
+.api-container {
+  min-height: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  padding-top: $header-height + $language-bar-height;
+}
+
+.api-toc-container {
+  height: 100%;
+  width: $toc-width;
+  position: fixed;
+  z-index: 5;
+  box-sizing: border-box;
+  padding-top: $header-height + $language-bar-height;
+  border-right: 1px solid $color-light-gray;
+}
+
+.toc {
+  padding-bottom: 30px;
+}
+
+.api-page-container {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: $header-height + $language-bar-height;
+  padding-left: $toc-width;
+
+  display: flex;
+  float: left;
+  left: 0;
+  margin-left: 0px;
+  justify-content: center;
+}
+
+@media only screen and (max-width: $api-page-width + $toc-width + 16px) {
+  .api-page-container {
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (max-width: $min-width) {
+  .api-toc-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-top: 0px;
+    border-right: 0px;
+    margin-bottom: 30px;
+  }
+  .api-page-container {
+    padding-top: 0px;
+    padding-left: 0px;
+  }
+  .toc {
+    padding-bottom: 0px;
+  }
+}
