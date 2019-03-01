@@ -4,7 +4,6 @@ module.exports = {
     description: 'A library for network visualization and algorithm simulation.',
     keywords: ['network', 'graph', 'visualization', 'javascript', 'python', 'jupyter']
   },
-  pathPrefix: '/algorithmx-website',
   plugins: [
     'gatsby-plugin-typescript',
     {
