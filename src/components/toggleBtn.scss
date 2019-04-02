@@ -19,9 +19,8 @@ $toggle-btn-r: 6px;
   r: $toggle-btn-r;
   stroke-width: 1px;
   stroke: $color-gray;
-  fill: none;
-
-  transition: r 0.2s ease-in;
+  fill: transparent;
+  transition: fill 0.2s, r 0.2s;
 }
 
 .toggle-btn-overlay {
@@ -37,10 +36,16 @@ $toggle-btn-r: 6px;
 @mixin toggleBtnOn {
   .toggle-btn-circle {
     r: $toggle-btn-r - 1;
-    transition: r 0.2s ease-out;
+    transition: r 0.2s;
   }
   .toggle-btn-overlay {
     r: $toggle-btn-r;
-    transition: r 0.2s ease-in;
+    transition: r 0.2s;
+  }
+}
+
+@mixin toggleBtnHover {
+  .toggle-btn-circle {
+    fill: $color-light-gray;
   }
 }

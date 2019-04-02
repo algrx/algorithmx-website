@@ -48,13 +48,13 @@
   margin-right: 10px;
 
   transform: rotateZ(0deg);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s;
 }
 
 .toc-dropdown-open {
   .toc-dropdown-icon {
     transform: rotateZ(90deg);
-    transition: transform 0.2s ease;
+    transition: transform 0.2s;
   }
 }
 
@@ -80,33 +80,27 @@
 }
 
 .toc-dropdown-link-overlay {
-  height: calc(100% + 2px);
+  height: 100%;
   width: 100%;
   position: absolute;
   box-sizing: border-box;
-
   border-right: 0px solid transparent;
-  transition:  border-right 0.2s ease-out;
 }
 
 .toc-dropdown-link-text {
   margin-left: 30px;
   color: $color-dark-gray;
   font: 400 0.8em $font-primary;
-
-  transition: color 0.2s ease;
 }
 
 .toc-dropdown-link:hover {
   .toc-dropdown-link-overlay {
-    border-right: 3px solid $color-primary;
-    transition: border-right 0.2s ease-in;
+    border-right: 3px solid $color-light-gray;
   }
 }
 
 .toc-dropdown-link-cur {
   .toc-dropdown-link-overlay {
-    height: 100%;
-    border-right: 3px solid $color-primary;
+    border-right: 3px solid $color-primary !important;
   }
 }

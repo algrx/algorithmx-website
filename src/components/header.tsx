@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = props => (
       </div>
       <div className='header-btn-container'>
         <HeaderBtn {...props} text='HOME' link='/' section={HeaderSection.Home}/>
-        <HeaderBtn {...props} text='API' link='/api/' section={HeaderSection.API}/>
+        <HeaderBtn {...props} text='API' link='/api/Selection/add' section={HeaderSection.API}/>
         <div className='header-btn header-dropdown-btn'>
           <span>DOCS</span>
           <div className='header-dropdown-menu header-dropdown-menu-docs'>

@@ -36,7 +36,7 @@ $language-bar-height: 28px;
 }
 
 .language-bar-btn:hover {
-  @include toggleBtnOn;
+  @include toggleBtnHover;
 }
 
 .language-bar-btn-text {

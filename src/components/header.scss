@@ -60,16 +60,16 @@ header {
   box-sizing: border-box;
 
   border-bottom: 0px solid transparent;
-  transition: border-bottom 0.2s ease-out;
+  transition: border-bottom 0.2s ease;
 }
 
 .header-btn:hover .header-btn-overlay {
-  border-bottom: 3px solid $color-primary;
-  transition: border-bottom 0.2s ease-in;
+  border-bottom: 3px solid $color-light-gray;
+  transition: border-bottom 0.2s ease;
 }
 
 .header-btn-overlay-cur {
-  border-bottom: 3px solid $color-primary;
+  border-bottom: 3px solid $color-primary !important;
 }
 
 .header-dropdown-btn {
