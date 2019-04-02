@@ -52,10 +52,10 @@
     "@types/react-redux": "^7.0.1",
     "gatsby-cli": "^2.4.10",
     "ts-node": "^8.0.3",
-    "tslint": "^5.10.0",
+    "tslint": "^5.15.0",
     "tslint-config-standard": "^8.0.0",
     "tslint-immutable": "^5.0.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.2.2"
+    "typescript": "^3.4.1"
   }
 }

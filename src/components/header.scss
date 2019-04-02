@@ -45,12 +45,8 @@ header {
   position: relative;
 
   font: 300 1em $font-primary;
-  color: $color-very-dark-gray;
   cursor: pointer;
-}
-
-.header-btn-text {
-  border-bottom: 3px solid $color-primary;
+  transition: color 0.2s;
 }
 
 .header-btn-overlay {
@@ -60,14 +56,17 @@ header {
   box-sizing: border-box;
 
   border-bottom: 0px solid transparent;
-  transition: border-bottom 0.2s ease;
+  transition: border-bottom 0.2s;
 }
 
-.header-btn:hover .header-btn-overlay {
-  border-bottom: 3px solid $color-light-gray;
-  transition: border-bottom 0.2s ease;
+.header-btn:hover {
+  color: $color-primary !important;
+  transition: color 0.2s;
 }
 
+.header-btn-cur {
+  color: $color-primary !important;
+}
 .header-btn-overlay-cur {
   border-bottom: 3px solid $color-primary !important;
 }
@@ -81,10 +80,11 @@ header {
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 11;
+  z-index: 12;
   top: 0px;
   margin-top: $header-height - 1;
 
+  color: $color-very-dark-gray;
   background-color: white;
   border: 1px solid $color-light-gray;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);

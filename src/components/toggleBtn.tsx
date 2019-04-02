@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './toggleBtn.scss'
+import './togglebtn.scss'
 
 export const ToggleBtn: React.FC = () => (
   <div className='toggle-btn'>

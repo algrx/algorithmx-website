@@ -6,33 +6,31 @@ import * as Babel from '@babel/standalone'
 import * as algorithmx from 'algorithmx'
 
 import { RootState } from '../../state/state'
-import { PLanguage } from '../../state/languageBar'
-import './codeExample.scss'
+import { PLang } from '../../state/plang'
+import './codeexample.scss'
 
 export enum ExampleType {
   AlgxExample = 'algorithmx-example'
 }
 export interface ExampleData {
   readonly type: ExampleType.AlgxExample
-  readonly code: { readonly [k in PLanguage]: string }
+  readonly code: { readonly [k in PLang]: string }
 }
 
 export interface CodeExampleStateProps {
-  readonly lang: PLanguage
+  readonly pLang: PLang
 }
 
-export interface CodeExampleStateProps {
-  readonly lang: PLanguage
-}
-
-const PRISM_LANGS: { readonly [k in PLanguage]: Prism.LanguageDefinition } = {
-  [PLanguage.JS]: Prism.languages.js,
-  [PLanguage.Python]: Prism.languages.python
+const PRISM_LANGS: { readonly [k in PLang]: Prism.Grammar } = {
+  [PLang.JS]: Prism.languages.js,
+  [PLang.Python]: Prism.languages.python
 }
 
 const resetCanvas = (canvas: algorithmx.CanvasSelection, el: Element) => {
   canvas.duration(0).eventQ(null).remove().cancelall().startall()
+  /* tslint:disable */
   const size: [number, number] = [el.getBoundingClientRect().width, 200]
+  /* tslint:enable */
   canvas.duration(0).svgattr('width', '100%').size(size)
 }
 
@@ -42,30 +40,32 @@ class CodeExample extends React.Component<CodeExampleStateProps & ExampleData> {
   private canvasElement: Element | null = null
   /* tslint:enable */
 
-  public render (): React.ReactElement {
-    /* tslint:disable */
+  public render (): JSX.Element {
     const props = this.props
-    /* tslint:enable */
-    const formattedCode = Prism.highlight(props.code[props.lang], PRISM_LANGS[props.lang])
+    const prismPLangId = {
+      [PLang.JS]: 'js',
+      [PLang.Python]: 'python'
+    }[props.pLang]
+    const formattedCode = Prism.highlight(props.code[props.pLang], PRISM_LANGS[props.pLang], prismPLangId)
 
-    const jsCode = Babel.transform(props.code[PLanguage.JS], { presets: ['es2015'] }).code
+    const jsCode = Babel.transform(props.code[PLang.JS], { presets: ['es2015'] }).code
     const jsCodeFunction = new Function('canvas', jsCode)
 
     return (
       <div className='code-example'>
         <pre className='code-example-code'>
-          <code >
+          <code>
             <span className='code-example-code-text' dangerouslySetInnerHTML={{ __html: formattedCode }}/>
           </code>
         </pre>
         <div className='code-example-output' style={{ height: '200px' }} ref={el => {
           if (el !== null) {
-             /* tslint:disable */
+            /* tslint:disable */
             this.canvasElement = el
             if (!this.canvas) this.canvas = algorithmx.canvas(this.canvasElement)
+            /* tslint:enable */
             const canvas = this.canvas
             const canvasElement = this.canvasElement
-            /* tslint:enable */
 
             resetCanvas(canvas, canvasElement)
             jsCodeFunction(canvas)
@@ -73,10 +73,9 @@ class CodeExample extends React.Component<CodeExampleStateProps & ExampleData> {
         }}/>
         <div className='code-example-bar'>
           <div className='code-example-btn' onClick={event => {
-            /* tslint:disable */
             const canvas = this.canvas
             const canvasElement = this.canvasElement
-            /* tslint:enable */
+
             if (canvas && canvasElement) {
               resetCanvas(canvas, canvasElement)
               jsCodeFunction(canvas)
@@ -96,8 +95,10 @@ class CodeExample extends React.Component<CodeExampleStateProps & ExampleData> {
 
 const mapStateToProps = (state: RootState): CodeExampleStateProps => {
   return {
-    lang: state.apiLang
+    pLang: state.pLang
   }
 }
 
-export const CodeExampleConnected = connect(mapStateToProps)(CodeExample)
+export const CodeExampleConnected = connect<CodeExampleStateProps, {}, {}, RootState>(
+  state => ({ pLang: state.pLang })
+)(CodeExample)

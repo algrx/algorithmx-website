@@ -20,8 +20,6 @@
     "arrow-parens": false,
     "no-empty-interface": false,
     "no-var-keyword": true,
-    "no-class": true,
-    "no-this": true,
     "no-any": true,
     "typedef": [true, "call-signature"],
 

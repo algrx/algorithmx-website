@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { graphql } from 'gatsby'
 
-import { PLanguage, PLanguageNames } from '../../state/languageBar'
+import { PLang, PLangName } from '../../state/plang'
 import { ApiContent } from './content'
 import { RootState } from '../../state/state'
 import './page.scss'
@@ -13,7 +13,7 @@ export interface ApiPageFrontmatter {
 }
 
 export interface ApiPageStateProps {
-  readonly lang: PLanguage
+  readonly lang: PLang
 }
 
 export interface ApiPageProps {
@@ -35,10 +35,10 @@ const ApiDocLinks: React.FC<ApiPageProps & ApiPageStateProps> = props => {
     {props.frontmatter.docs.map((docLink, i) => {
       const [docLinkClass, docLinkMethod] = docLink.split('.')
 
-      const docUrls: { readonly [k in PLanguage]: string } = {
-        [PLanguage.JS]: 'https://algrx.github.io/algorithmx/docs/js/interfaces/'
+      const docUrls: { readonly [k in PLang]: string } = {
+        [PLang.JS]: 'https://algrx.github.io/algorithmx/docs/js/interfaces/'
           + `${docLinkClass.toLowerCase()}.html#${docLinkMethod}`,
-        [PLanguage.Python]: 'https://algorithmx-python.readthedocs.io/en/latest/graphics/selections.html#graphics.'
+        [PLang.Python]: 'https://algorithmx-python.readthedocs.io/en/latest/graphics/selections.html#graphics.'
           + `${docLinkClass}.${docLinkMethod}`
       }
 
@@ -46,7 +46,7 @@ const ApiDocLinks: React.FC<ApiPageProps & ApiPageStateProps> = props => {
         <span className='api-doc-link-title'>{docLink}</span>
         <a href={docUrls[props.lang]} className='api-doc-link-text'>
           <span className='fas fa-book-open api-doc-link-icon'/>
-          {`${PLanguageNames[props.lang]} Docs`}
+          {`${PLangName[props.lang]} Docs`}
         </a>
       </div>
     })}
@@ -64,6 +64,6 @@ const ApiPage: React.FC<ApiPageProps & ApiPageStateProps> = props => {
 }
 
 const mapStateToProps = (state: RootState): ApiPageStateProps => {
-  return { lang: state.apiLang }
+  return { lang: state.pLang }
 }
 export const ApiPageConnected = connect(mapStateToProps)(ApiPage)

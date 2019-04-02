@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { GlobalHeader } from './global'
 import { NodeProps, EdgeNodeProps, MarkdownNode } from './utils'
 import { HeaderSection } from '../components/header'
-import { LanguageBarConnected } from '../components/languageBar'
+import { PLangBarConnected } from '../components/plangbar'
 import { TocConnected } from '../components/toc/toc'
 import { TocJson, contentsFromJson, gqlTocJsonFragment } from '../components/toc/paths'
 import { ApiPageFrontmatter, ApiPageConnected, gqlApiFrontmatterFragment } from '../components/api/page'
@@ -62,7 +62,7 @@ export const ApiPage: React.FC<ApiProps> = props => {
 
   return <>
     <GlobalHeader curSection={HeaderSection.API}>
-      <LanguageBarConnected/>
+      <PLangBarConnected/>
     </GlobalHeader>
     <div className='api-toc-container'>
       <TocConnected curPath={tocPath} contents={tocData}/>

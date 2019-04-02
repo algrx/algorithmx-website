@@ -62,7 +62,9 @@ const queryStr = `
 
 const API_PATH = '/api/'
 
+/* tslint:disable */
 const COMPONENTS: ReadonlyArray<[string, string]> = [
+/* tslint:enable */
   [API_PATH, '../templates/api.tsx'],
   ['/', '../templates/home.tsx']
 ]

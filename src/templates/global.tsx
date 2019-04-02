@@ -1,14 +1,14 @@
 import * as React from 'react'
 
 import { Head } from '../components/head'
-import { Header, HeaderProps } from '../components/header'
+import { HeaderConnected, HeaderOwnProps } from '../components/header'
 import './global.scss'
 
-export const GlobalHeader: React.FC<HeaderProps> = props => {
+export const GlobalHeader: React.FC<HeaderOwnProps> = props => {
   return (
     <div className='global-header'>
     <Head/>
-    <Header curSection={props.curSection}/>
+    <HeaderConnected {...props}/>
     {props.children}
     </div>
   )
