@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { extractJsonFromHtml } from '../contentUtils'
-import { ExampleType, ExampleData, CodeExampleConnected } from './codeExample'
+import { ExampleType, ExampleData, CodeExampleConnected } from './codeexample'
 import './page.scss'
 
 export const ApiContent: React.FC<{ readonly rawHtml: string }> = props => {

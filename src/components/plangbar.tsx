@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Action, Dispatch, AnyAction, Reducer } from 'redux'
 
 import { PLang, PLangName, ChangePLangProps, mapChangePLangToProps } from '../state/plang'
-import { ToggleBtn } from './toggleBtn'
+import { ToggleBtn } from './togglebtn'
 import { RootState } from '../state/state'
 import './plangbar.scss'
 
