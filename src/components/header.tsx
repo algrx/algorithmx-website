@@ -41,7 +41,7 @@ interface HeaderBtnProps {
 }
 const HeaderBtn: React.FC<HeaderOwnProps & HeaderBtnProps> = props => {
   const isCur = props.curSection === props.section
-  return (    
+  return (
     <div className={`header-btn ${isCur ? 'header-btn-cur' : ''}`}>
       <Link to={props.link} className='a-btn'>
         <span>{props.text}</span>
