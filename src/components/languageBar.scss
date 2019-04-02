@@ -29,7 +29,6 @@ $language-bar-height: 28px;
 .language-bar-btn-icon {
   margin-left: 5px;
   color: $color-dark-gray;
-  transition: color 0.2s ease;
 }
 
 .language-bar-btn-cur {
@@ -38,11 +37,6 @@ $language-bar-height: 28px;
 
 .language-bar-btn:hover {
   @include toggleBtnOn;
-}
-
-.language-bar-btn:hover .language-bar-btn-icon {
-  //color: $color-dark-primary;
-  transition: color 0.2s ease;
 }
 
 .language-bar-btn-text {
