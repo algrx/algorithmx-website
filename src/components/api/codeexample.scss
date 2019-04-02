@@ -1,0 +1,64 @@
+@import '../variables.scss';
+
+.code-example {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid $color-light-gray;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-example-code {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+
+  border-bottom: 1px solid $color-light-gray;
+  background-color: $color-white-gray;
+  color: $color-very-dark-gray;
+  overflow: auto;
+}
+
+.code-example-code-text {
+  font: 0.85em $font-mono;
+}
+
+.code-example-output {
+  height: auto;
+}
+
+.algorithmx {
+  display: block;
+}
+
+.code-example-bar {
+  height: 30px;
+  position: absolute;
+  bottom: 0px;
+
+  display: flex;
+  align-items: center;
+}
+
+.code-example-btn {
+  width: 30px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: $color-gray;
+}
+
+.code-example-btn-rotate {
+  transform: rotate(360deg);
+  transition: transform 0.5s ease;
+}
+
+.token.function {
+  color: inherit;
+}
