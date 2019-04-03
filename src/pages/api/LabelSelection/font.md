@@ -10,7 +10,7 @@ type: algorithmx-example
 code:
   js: |
     const initNode = canvas.node(1).add()
-      .shape('rect').size([30, 30])
+        .shape('rect').size([30, 30])
     
     initNode.label().text('Custom\nFonts')
     initNode.label(1).add().text('Times').font('Times')
@@ -19,7 +19,7 @@ code:
     initNode.label(4).add().text('Impact').font('Impact')
   python: |
     init_node = canvas.node(1).add()
-      .shape('rect').size((30, 30))
+        .shape('rect').size((30, 30))
     
     init_node.label().text('Custom\nFonts')
     init_node.label(1).add().text('Times').font('Times')
