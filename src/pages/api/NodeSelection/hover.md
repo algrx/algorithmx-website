@@ -16,7 +16,7 @@ code:
     }
     
     function onHoverOut(nodeSel) {
-      nodeSel.size([20, 12]).color('gray')
+      nodeSel.size([20, 12]).color('dark-gray')
         .label().visible(false)
     }
     
@@ -28,13 +28,21 @@ code:
     
     onHoverOut(initNodes)
   python: |
-    canvas.nodes([1, 2, 3, 4, 5]).add() \
-      .pos(lambda n, i: ((i - 2) * 50, 0))
+    def on_hover_in(node_sel):
+        node_sel.size([60, 25]).color('red') \
+            .label().visible(True) \
+                .text(lambda n: 'You have hovered\n' \
+                  + 'over node {}'.format(n))
     
-    canvas.pause(0.5)
-    canvas.node(1).ease('linear').size('1.5x').pause(0.5)
-    canvas.node(2).ease('poly').size('1.5x').pause(0.5)
-    canvas.node(3).ease('bounce').size('1.5x').pause(0.5)
-    canvas.node(4).ease('back').size('1.5x').pause(0.5)
-    canvas.node(5).ease('elastic-in').size('1.5x')
+    def on_hover_out(node_sel):
+        node_sel.size([20, 12]).color('dark-gray') \
+            .label().visible(False)
+    
+    init_nodes = canvas.nodes([1, 2, 3]).add() \
+        .shape('rect') \
+        .pos(lambda n, i: ((i - 1) * 100, 0)) \
+        .hoverin(lambda n: on_hover_in(canvas.node(n))) \
+        .hoverout(lambda n: on_hover_out(canvas.node(n)))
+    
+    on_hover_out(init_nodes)
 </data>
