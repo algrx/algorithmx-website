@@ -60,16 +60,16 @@ header {
 }
 
 .header-btn:hover {
-  // color: $color-primary !important;
-  // transition: color 0.2s;
+  color: $color-primary !important;
+  transition: color 0.2s;
 }
 
 .header-btn:hover .header-btn-overlay {
-  border-bottom: 3px solid $color-light-gray;
+  // border-bottom: 3px solid $color-light-gray;
 }
 
 .header-btn-cur {
-  // color: $color-primary !important;
+  color: $color-primary !important;
 }
 .header-btn-overlay-cur {
   border-bottom: 3px solid $color-primary !important;
@@ -150,11 +150,9 @@ $header-dropdown-inner-btn-height: 40px;
 .header-right-icon {
   font-size: 1.4em;
   color: $color-very-dark-gray;
-
-  transition: color 0.2s ease-in;
+  transition: color 0.2s;
 }
 
 .header-right-btn:hover .header-right-icon {
   color: $color-primary;
-  transition: color 0.2s ease;
 }
