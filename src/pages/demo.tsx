@@ -55,6 +55,11 @@ class DemoPage extends React.Component<DemoStateProps & DemoDispatchProps> {
             if (el) /* tslint:disable */this.iframe = el/* tslint:enable */
           }}>
         </iframe>
+        {!props.loaded ?
+          <div className='demo-loading'>
+            <span className='fas fa-spinner fa-spin'/>
+          </div>
+          : <></>}
       </div>
     )
   }

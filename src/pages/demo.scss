@@ -13,6 +13,20 @@
   pointer-events: none;
 }
 
+.demo-loading {
+  width: 100%;
+  min-height: 100%;
+  padding-top: $header-height;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 3em;
+  color: $color-light-gray;
+}
+
 .demo-wrapper-loaded {
   header {
     border-bottom: none;
