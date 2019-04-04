@@ -60,16 +60,16 @@ header {
 }
 
 .header-btn:hover {
-  color: $color-primary !important;
-  transition: color 0.2s;
+  // color: $color-primary !important;
+  // background-color: $color-white-gray;
 }
 
 .header-btn:hover .header-btn-overlay {
-  // border-bottom: 3px solid $color-light-gray;
+  border-bottom: 3px solid $color-light-gray;
 }
 
 .header-btn-cur {
-  color: $color-primary !important;
+  // color: $color-primary !important;
 }
 .header-btn-overlay-cur {
   border-bottom: 3px solid $color-primary !important;

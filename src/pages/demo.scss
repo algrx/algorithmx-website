@@ -3,10 +3,10 @@
 
 .demo {
   width: 100%;
-  min-height: 100%;
+  height: calc(100% - #{$header-height});
+  flex: 1;
+  min-width: $min-width;
   position: absolute;
-  box-sizing: border-box;
-  padding-top: $header-height;
   border: none;
 }
 .demo-inactive {
@@ -15,8 +15,7 @@
 
 .demo-loading {
   width: 100%;
-  min-height: 100%;
-  padding-top: $header-height;
+  height: calc(100% - #{$header-height});
   position: absolute;
   box-sizing: border-box;
   display: flex;
@@ -27,6 +26,11 @@
   color: $color-light-gray;
 }
 
+.demo-wrapper {
+  .global-header {
+    position: relative;
+  }
+}
 .demo-wrapper-loaded {
   header {
     border-bottom: none;
