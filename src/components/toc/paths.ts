@@ -38,7 +38,7 @@ export interface TocRedirects {
 }
 
 export const graphqlTocJsonFragmentStr = `
-  fragment TocJsonFragment on Json {
+  fragment TocJsonFragment on JsonData {
     entries {
       type
       name
@@ -48,7 +48,7 @@ export const graphqlTocJsonFragmentStr = `
 `
 
 export const gqlTocJsonFragment = () => graphql`
-  fragment TocJsonFragment on Json {
+  fragment TocJsonFragment on JsonData {
     entries {
       type
       name

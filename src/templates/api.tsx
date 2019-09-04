@@ -13,7 +13,7 @@ import '../components/page.scss'
 
 type ApiProps = NodeProps<'markdownRemark', MarkdownNode<ApiPageFrontmatter>>
 & NodeProps<'file', {
-  readonly childJson: TocJson
+  readonly childJsonData: TocJson
 }> & EdgeNodeProps<'allMarkdownRemark', MarkdownNode<{
   readonly title: string
 }>>
@@ -30,7 +30,7 @@ export const queryMarkdown = graphql`
       ...ApiFrontmatterFragment
     },
     file(relativePath: { eq: "pages/api/toc.json" }) {
-      childJson {
+      childJsonData {
         ...TocJsonFragment
       }
     },
@@ -58,7 +58,7 @@ export const ApiPage: React.FC<ApiProps> = props => {
       return {...result, [edge.node.fields.slug]: edge.node.frontmatter.title }
     }, {})
 
-  const tocData = contentsFromJson('/api/', props.data.file.childJson, tocPathNames)
+  const tocData = contentsFromJson('/api/', props.data.file.childJsonData, tocPathNames)
 
   return <>
     <GlobalHeader curSection={HeaderSection.API}>

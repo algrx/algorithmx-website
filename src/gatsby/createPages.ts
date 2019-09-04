@@ -27,7 +27,7 @@ interface CreatePagesQuery {
       }>
     }
     readonly file: {
-      readonly childJson: TocJson
+      readonly childJsonData: TocJson
     }
   }
 }
@@ -53,7 +53,7 @@ const queryStr = `
       }
     },
     file(relativePath: { eq: "pages/api/toc.json" }) {
-      childJson {
+      childJsonData {
         ...TocJsonFragment
       }
     }
@@ -74,7 +74,7 @@ export const createApiRedirects = (props: CreatePagesQuery,
   const apiPaths = props.data.allMarkdownRemark.edges
     .map(edge => edge.node.fields.slug)
     .filter(s => s.startsWith(API_PATH))
-  const apiRedirects = redirectsFromJson(API_PATH, props.data.file.childJson, apiPaths)
+  const apiRedirects = redirectsFromJson(API_PATH, props.data.file.childJsonData, apiPaths)
 
   Object.entries(apiRedirects).forEach(([k, v]) => {
     createRedirect({ fromPath: k, toPath: v, isPermanent: true, redirectInBrowser: true })
