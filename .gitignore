@@ -6,6 +6,5 @@ coverage/
 .vscode/
 *.cache
 *_cache
-package-lock.json
 *.log
 .DS_Store
