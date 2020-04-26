@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  build:
+    build:
+      context: .
+      target: install
+    volumes:
+    - "./public:/app/public"
+    image: algorithmx-website-build
+    command: npm run build
