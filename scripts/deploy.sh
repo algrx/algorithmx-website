@@ -1,7 +1,8 @@
 # git
 cd public
 git init
-git remote add origin "https://${GITHUB_TOKEN}@github.com/algrx/algrx.github.io.git"
+#git remote add origin "https://${GITHUB_TOKEN}@github.com/algrx/algrx.github.io.git"
+git remote add origin "https://github.com/algrx/algrx.github.io.git"
 
 # deploy
 git add .
