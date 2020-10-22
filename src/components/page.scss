@@ -1,33 +1,33 @@
 @import './variables';
 
 h1 {
-  font: 300 2.5em $font-primary;
-  color: $color-very-dark-gray;
+    font: 300 2.5em $font-primary;
+    color: $color-very-dark-gray;
 }
 h2 {
-  font: 300 1.5em $font-primary;
-  color: $color-very-dark-gray;
+    font: 300 1.5em $font-primary;
+    color: $color-very-dark-gray;
 }
 h3 {
-  font: 300 1em $font-primary;
-  color: $color-very-dark-gray;
+    font: 300 1em $font-primary;
+    color: $color-very-dark-gray;
 }
 
 p {
-  font: 500 0.95em $font-primary;
-  color: $color-very-dark-gray;
+    font: 500 0.95em $font-primary;
+    color: $color-very-dark-gray;
 }
 
 a {
-  text-decoration: inherit;
-  color: rgb(103, 173, 238);
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
+    text-decoration: inherit;
+    color: rgb(103, 173, 238);
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 li {
-  font: 500 0.95em $font-primary;
-  color: $color-very-dark-gray;
+    font: 500 0.95em $font-primary;
+    color: $color-very-dark-gray;
 }

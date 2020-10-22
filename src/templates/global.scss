@@ -3,27 +3,27 @@
 @import '../components/variables.scss';
 
 .global-header {
-  width: 100%;
-  position: fixed;
-  z-index: 10;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
 }
 
 @media only screen and (max-width: $min-width) {
-  .global-header {
-    position: relative;
-  }
+    .global-header {
+        position: relative;
+    }
 }
 
 .global-body {
-  width: 100%;
-  min-height: 100%;
-  position: relative;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
 }
 
 .global-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  box-sizing: border-box;
-  padding-top: $header-height;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: $header-height;
 }

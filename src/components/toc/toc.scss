@@ -2,105 +2,105 @@
 @import '../togglebtn';
 
 .toc {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  overflow: auto;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: auto;
 
-  background-color: $color-white-gray;
+    background-color: $color-white-gray;
 
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-  &::-webkit-scrollbar-track {
-    background:  $color-very-light-gray;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: $color-light-gray;
-  }
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        background: $color-very-light-gray;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $color-light-gray;
+    }
 }
 
 .toc-dropdown {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding-left: 30px;
-  box-sizing: border-box;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    box-sizing: border-box;
 
-  cursor: pointer;
-  border-bottom: 1px solid $color-light-gray;
+    cursor: pointer;
+    border-bottom: 1px solid $color-light-gray;
 }
 
 .toc-dropdown-text {
-  color: $color-dark-gray;
-  font: 400 0.9em $font-primary;
+    color: $color-dark-gray;
+    font: 400 0.9em $font-primary;
 }
 
 .toc-dropdown-icon-container {
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .toc-dropdown-icon {
-  color: $color-primary;
-  margin-right: 10px;
+    color: $color-primary;
+    margin-right: 10px;
 
-  transform: rotateZ(0deg);
-  transition: transform 0.2s;
+    transform: rotateZ(0deg);
+    transition: transform 0.2s;
 }
 
 .toc-dropdown-open {
-  .toc-dropdown-icon {
-    transform: rotateZ(90deg);
-    transition: transform 0.2s;
-  }
+    .toc-dropdown-icon {
+        transform: rotateZ(90deg);
+        transition: transform 0.2s;
+    }
 }
 
 .toc-dropdown-menu {
-  visibility: hidden;
-  display: none;
+    visibility: hidden;
+    display: none;
 }
 .toc-dropdown-menu-open {
-  visibility: visible;
-  display: inherit;
-  height: auto;
+    visibility: visible;
+    display: inherit;
+    height: auto;
 }
 
 .toc-dropdown-link {
-  height: 30px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  box-sizing: border-box;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
 
-  background-color: white;
-  border-bottom: 1px solid $color-light-gray;
+    background-color: white;
+    border-bottom: 1px solid $color-light-gray;
 }
 
 .toc-dropdown-link-overlay {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  box-sizing: border-box;
-  border-right: 0px solid transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    box-sizing: border-box;
+    border-right: 0px solid transparent;
 }
 
 .toc-dropdown-link-text {
-  margin-left: 30px;
-  color: $color-dark-gray;
-  font: 400 0.8em $font-primary;
+    margin-left: 30px;
+    color: $color-dark-gray;
+    font: 400 0.8em $font-primary;
 }
 
 .toc-dropdown-link:hover {
-  .toc-dropdown-link-overlay {
-    border-right: 3px solid $color-light-gray;
-  }
+    .toc-dropdown-link-overlay {
+        border-right: 3px solid $color-light-gray;
+    }
 }
 
 .toc-dropdown-link-cur {
-  .toc-dropdown-link-overlay {
-    border-right: 3px solid $color-primary !important;
-  }
+    .toc-dropdown-link-overlay {
+        border-right: 3px solid $color-primary !important;
+    }
 }

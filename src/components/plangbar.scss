@@ -4,43 +4,43 @@
 $language-bar-height: 28px;
 
 .language-bar {
-  width: 100%;
-  height: $language-bar-height;
-  box-sizing: border-box;
+    width: 100%;
+    height: $language-bar-height;
+    box-sizing: border-box;
 
-  background-color: $color-very-light-gray;
-  border-bottom: 1px solid $color-light-gray;
+    background-color: $color-very-light-gray;
+    border-bottom: 1px solid $color-light-gray;
 }
 
 .language-bar-btn-container {
-  height: 100%;
-  display: flex;
-  margin-left: 30px;
+    height: 100%;
+    display: flex;
+    margin-left: 30px;
 }
 
 .language-bar-btn {
-  height: 100%;
-  display: flex;
-  margin-right: 25px;
-  align-items: center;
-  cursor: pointer;
+    height: 100%;
+    display: flex;
+    margin-right: 25px;
+    align-items: center;
+    cursor: pointer;
 }
 
 .language-bar-btn-icon {
-  margin-left: 5px;
-  color: $color-dark-gray;
+    margin-left: 5px;
+    color: $color-dark-gray;
 }
 
 .language-bar-btn-cur {
-  @include toggleBtnOn;
+    @include toggleBtnOn;
 }
 
 .language-bar-btn:hover {
-  @include toggleBtnHover;
+    @include toggleBtnHover;
 }
 
 .language-bar-btn-text {
-  margin-left: 5px;
-  font: 800 0.7em $font-primary;
-  color: $color-dark-gray;
+    margin-left: 5px;
+    font: 800 0.7em $font-primary;
+    color: $color-dark-gray;
 }

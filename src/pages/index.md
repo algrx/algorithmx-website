@@ -8,8 +8,8 @@ title: 'AlgorithmX'
 
 AlgorithmX is a library for network visualization and algorithm simulation, available in the following languages:
 
-- <a href='https://github.com/algrx/algorithmx'>JavaScript</a> (incl. TypeScript)
-- <a href='https://github.com/algrx/algorithmx-python'>Python</a> (incl. Jupyter Notebooks)
+-   <a href='https://github.com/algrx/algorithmx'>JavaScript</a> (incl. TypeScript)
+-   <a href='https://github.com/algrx/algorithmx-python'>Python</a> (incl. Jupyter Notebooks)
 
 On the client side, AlgorithmX uses <a href='https://github.com/d3/d3'>D3</a> and <a href='https://github.com/tgdwyer/WebCola'>WebCola</a> to render networks.
 
@@ -47,4 +47,5 @@ code:
 </data>
 
 ## Credits
+
 AlgorithmX was developed by <a href='https://github.com/alexsocha'>Alex Socha</a> with support from <a href='https://www.monash.edu/it'>Monash University</a>.

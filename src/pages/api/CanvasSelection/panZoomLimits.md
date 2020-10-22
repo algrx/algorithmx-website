@@ -3,7 +3,6 @@ title: 'Pan & Zoom Limits'
 docs: ['CanvasSelection.panlimit', 'CanvasSelection.zoomlimit', 'CanvasSelection.zoomkey']
 ---
 
-
 Restricting pan and zoom to a box the size of the canvas:
 
 <data type='yaml'>

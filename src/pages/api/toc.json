@@ -1,29 +1,29 @@
 {
-  "entries": [
-     {
-      "type": "folder",
-      "name": "Selection",
-      "path": "Selection/"
-    },
-    {
-      "type": "folder",
-      "name": "CanvasSelection",
-      "path": "CanvasSelection/"
-    },
-    {
-      "type": "folder",
-      "name": "NodeSelection",
-      "path": "NodeSelection/"
-    },
-    {
-      "type": "folder",
-      "name": "EdgeSelection",
-      "path": "EdgeSelection/"
-    },
-    {
-      "type": "folder",
-      "name": "LabelSelection",
-      "path": "LabelSelection/"
-    }
-  ]
+    "entries": [
+        {
+            "type": "folder",
+            "name": "Selection",
+            "path": "Selection/"
+        },
+        {
+            "type": "folder",
+            "name": "CanvasSelection",
+            "path": "CanvasSelection/"
+        },
+        {
+            "type": "folder",
+            "name": "NodeSelection",
+            "path": "NodeSelection/"
+        },
+        {
+            "type": "folder",
+            "name": "EdgeSelection",
+            "path": "EdgeSelection/"
+        },
+        {
+            "type": "folder",
+            "name": "LabelSelection",
+            "path": "LabelSelection/"
+        }
+    ]
 }

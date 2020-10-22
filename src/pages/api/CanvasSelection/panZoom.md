@@ -3,7 +3,6 @@ title: 'Pan & Zoom'
 docs: ['CanvasSelection.pan', 'CanvasSelection.zoom']
 ---
 
-
 Using pan and zoom for animation close-ups:
 
 <data type='yaml'>
