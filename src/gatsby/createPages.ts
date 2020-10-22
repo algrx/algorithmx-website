@@ -1,19 +1,6 @@
 import * as path from 'path'
 import { TocJson, redirectsFromJson, graphqlTocJsonFragmentStr } from '../components/toc/paths'
-
-interface CreatePageArgs {
-  readonly path: string
-  readonly component: string
-  readonly context: {
-    readonly slug: string
-  }
-}
-interface CreateRedirectArgs {
-  readonly fromPath: string
-  readonly toPath: string
-  readonly isPermanent?: boolean
-  readonly redirectInBrowser?: boolean
-}
+import { GatsbyNode, Actions } from 'gatsby';
 
 interface CreatePagesQuery {
   readonly data: {
@@ -29,14 +16,6 @@ interface CreatePagesQuery {
     readonly file: {
       readonly childJsonData: TocJson
     }
-  }
-}
-
-interface CreatePagesArgs {
-  readonly graphql: (query: string) => Promise<CreatePagesQuery>
-  readonly actions: {
-    readonly createPage: (args: CreatePageArgs) => void
-    readonly createRedirect: (args: CreateRedirectArgs) => void
   }
 }
 
@@ -70,7 +49,7 @@ const COMPONENTS: ReadonlyArray<[string, string]> = [
 ]
 
 export const createApiRedirects = (props: CreatePagesQuery,
-                                   createRedirect: CreatePagesArgs['actions']['createRedirect']) => {
+                                   createRedirect: Actions['createRedirect']) => {
   const apiPaths = props.data.allMarkdownRemark.edges
     .map(edge => edge.node.fields.slug)
     .filter(s => s.startsWith(API_PATH))
@@ -81,10 +60,11 @@ export const createApiRedirects = (props: CreatePagesQuery,
   })
 }
 
-export const createPages = ({ graphql, actions }: CreatePagesArgs) => {
+export const createPages: GatsbyNode['createPages'] = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
 
-  return graphql(queryStr).then(props => {
+  return graphql(queryStr).then(rawProps => {
+    const props = rawProps as CreatePagesQuery;
     createApiRedirects(props, createRedirect)
 
     props.data.allMarkdownRemark.edges.forEach(({ node }) => {

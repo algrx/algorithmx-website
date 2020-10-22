@@ -1,30 +1,8 @@
 import * as path from 'path'
+import { GatsbyNode } from 'gatsby';
+import { createFilePath } from 'gatsby-source-filesystem';
 
-import './declarations'
-import { createFilePath } from 'gatsby-source-filesystem'
-
-interface PageNode {
-  readonly internal: {
-    readonly type: string
-  }
-}
-
-interface CreateNodeFieldArgs {
-  readonly node: PageNode
-  readonly name: string
-  readonly value: string
-}
-
-interface OnCreateNodeArgs  {
-  readonly node: PageNode
-  readonly getNode: unknown
-  readonly basePath: string
-  readonly actions: {
-    readonly createNodeField: (args: CreateNodeFieldArgs) => void
-  }
-}
-
-export const onCreateNode = ({ node, getNode, actions }: OnCreateNodeArgs) => {
+export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === 'MarkdownRemark') {
     const slug = createFilePath({ node, getNode, basePath: 'pages' })
