@@ -56,21 +56,13 @@ header {
     box-sizing: border-box;
 
     border-bottom: 0px solid transparent;
-    // transition: border-bottom 0.2s;
+    transition: border-bottom 0.4s;
 }
-
-.header-btn:hover {
-    // color: $color-primary !important;
-    // background-color: $color-white-gray;
-}
-
 .header-btn:hover .header-btn-overlay {
     border-bottom: 3px solid $color-light-gray;
+    transition: border-bottom 0.1s;
 }
 
-.header-btn-cur {
-    // color: $color-primary !important;
-}
 .header-btn-overlay-cur {
     border-bottom: 3px solid $color-primary !important;
 }
@@ -96,14 +88,14 @@ header {
     visibility: hidden;
     opacity: 0;
     height: 0px;
-    transition: visibility 0.2s, height 0.2s ease-in, opacity 0.2s ease-in;
+    transition: visibility 0.15s, height 0.15s ease-in, opacity 0.15s ease-in;
 }
 
 .header-dropdown-btn:hover .header-dropdown-menu {
     visibility: visible;
     opacity: 1;
     height: 80px;
-    transition: visibility 0.2s, height 0.2s ease-in, opacity 0.2s ease-in;
+    transition: visibility 0.1s, height 0.1s ease-in, opacity 0.1s ease-in;
 }
 
 $header-dropdown-inner-btn-height: 40px;
