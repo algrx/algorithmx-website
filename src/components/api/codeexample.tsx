@@ -17,7 +17,7 @@ export interface ExampleData {
     readonly code: { readonly [k in PLang]: string };
 }
 
-export interface CodeExampleStateProps {
+export interface CodeExampleState {
     readonly pLang: PLang;
 }
 
@@ -32,86 +32,65 @@ const resetCanvas = (canvas: algorithmx.CanvasSelection, el: Element) => {
     canvas.duration(0).svgattr('width', '100%').size(size);
 };
 
-class CodeExample extends React.Component<CodeExampleStateProps & ExampleData> {
-    private canvas: algorithmx.CanvasSelection | null = null;
-    private canvasElement: Element | null = null;
+export const CodeExampleFC: React.FC<CodeExampleState & ExampleData> = (props) => {
+    const [canvas, setCanvas] = React.useState<algorithmx.CanvasSelection | null>(null);
+    const canvasRef = React.useRef<HTMLDivElement>(null);
+    React.useEffect(() => {
+        if (canvas === null) setCanvas(algorithmx.canvas(canvasRef.current!));
+        else {
+            resetCanvas(canvas!, canvasRef.current!);
+            jsCodeFunction(canvas);
+        }
+    });
 
-    public render(): JSX.Element {
-        const props = this.props;
-        const prismPLangId = {
-            [PLang.JS]: 'js',
-            [PLang.Python]: 'python',
-        }[props.pLang];
-        const formattedCode = Prism.highlight(
-            props.code[props.pLang],
-            PRISM_LANGS[props.pLang],
-            prismPLangId
-        );
+    const prismPLangId = {
+        [PLang.JS]: 'js',
+        [PLang.Python]: 'python',
+    }[props.pLang];
 
-        const jsCode = Babel.transform(props.code[PLang.JS], {
-            presets: ['es2015'],
-        }).code;
-        const jsCodeFunction = new Function('canvas', jsCode);
+    const formattedCode = Prism.highlight(
+        props.code[props.pLang],
+        PRISM_LANGS[props.pLang],
+        prismPLangId
+    );
 
-        return (
-            <div className="code-example">
-                <pre className="code-example-code">
-                    <code>
-                        <span
-                            className="code-example-code-text"
-                            dangerouslySetInnerHTML={{ __html: formattedCode }}
-                        />
-                    </code>
-                </pre>
+    const jsCode = Babel.transform(props.code[PLang.JS], {
+        presets: ['es2015'],
+    }).code;
+    const jsCodeFunction = new Function('canvas', jsCode);
+
+    return (
+        <div className="code-example">
+            <pre className="code-example-code">
+                <code>
+                    <span
+                        className="code-example-code-text"
+                        dangerouslySetInnerHTML={{ __html: formattedCode }}
+                    />
+                </code>
+            </pre>
+            <div className="code-example-output" style={{ height: '200px' }} ref={canvasRef} />
+            <div className="code-example-bar">
                 <div
-                    className="code-example-output"
-                    style={{ height: '200px' }}
-                    ref={(el) => {
-                        if (el !== null) {
-                            this.canvasElement = el;
-                            if (!this.canvas) this.canvas = algorithmx.canvas(this.canvasElement);
-                            const canvas = this.canvas;
-                            const canvasElement = this.canvasElement;
+                    className="code-example-btn"
+                    onClick={(event) => {
+                        if (!(canvas && canvasRef.current)) return;
 
-                            resetCanvas(canvas, canvasElement);
-                            jsCodeFunction(canvas);
-                        }
+                        resetCanvas(canvas, canvasRef.current);
+                        jsCodeFunction(canvas);
+
+                        const target = event.currentTarget;
+                        target.classList.add('code-example-btn-rotate');
+                        setTimeout(() => target.classList.remove('code-example-btn-rotate'), 500);
                     }}
-                />
-                <div className="code-example-bar">
-                    <div
-                        className="code-example-btn"
-                        onClick={(event) => {
-                            const canvas = this.canvas;
-                            const canvasElement = this.canvasElement;
-
-                            if (canvas && canvasElement) {
-                                resetCanvas(canvas, canvasElement);
-                                jsCodeFunction(canvas);
-
-                                const target = event.currentTarget;
-                                target.classList.add('code-example-btn-rotate');
-                                setTimeout(
-                                    () => target.classList.remove('code-example-btn-rotate'),
-                                    500
-                                );
-                            }
-                        }}
-                    >
-                        <span className="fas fa-sync-alt" />
-                    </div>
+                >
+                    <span className="fas fa-sync-alt" />
                 </div>
             </div>
-        );
-    }
-}
-
-const mapStateToProps = (state: RootState): CodeExampleStateProps => {
-    return {
-        pLang: state.pLang,
-    };
+        </div>
+    );
 };
 
-export const CodeExampleConnected = connect<CodeExampleStateProps, {}, {}, RootState>((state) => ({
+export const CodeExample = connect<CodeExampleState, {}, {}, RootState>((state) => ({
     pLang: state.pLang,
-}))(CodeExample);
+}))(CodeExampleFC);

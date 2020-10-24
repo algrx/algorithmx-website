@@ -7,7 +7,7 @@ import { GlobalHeader } from '../templates/global';
 import { HeaderSection, HeaderState } from '../components/header';
 import './demo.scss';
 
-const demoSrc = 'https://algrx.github.io/algorithmx-demo';
+const DEMO_URL = 'https://algrx.github.io/algorithmx-demo';
 
 enum DemoActionType {
     Init = 'demo/init',
@@ -23,49 +23,42 @@ interface DemoDispatchProps {
     readonly dispatchLoad: () => void;
 }
 
-class DemoPage extends React.Component<DemoStateProps & DemoDispatchProps> {
-    public iframe: null | HTMLIFrameElement = null;
+export const DempPageFC: React.FC<DemoStateProps & DemoDispatchProps> = (props) => {
+    const iframeRef = React.useRef<HTMLIFrameElement>(null);
+    React.useEffect(() => {
+        props.dispatchInit();
 
-    public componentWillMount(): void {
-        this.props.dispatchInit();
-    }
+        return () => {
+            if (!iframeRef.current) return;
+            const iframe = iframeRef.current;
+            try {
+                if (iframe.contentWindow && iframe.contentWindow.onbeforeunload) {
+                    iframe.contentWindow.onbeforeunload({} as BeforeUnloadEvent);
+                }
+            } catch (err) {}
+        };
+    });
 
-    public componentWillUnmount(): void {
-        const iframe = this.iframe;
-        try {
-            if (iframe && iframe.contentWindow && iframe.contentWindow.onbeforeunload) {
-                iframe.contentWindow.onbeforeunload((undefined as unknown) as BeforeUnloadEvent);
-            }
-        } catch (err) {
-            /* */
-        }
-    }
-
-    public render(): JSX.Element {
-        const props = this.props;
-        const hasOpenDropdown = Object.values(props.headerState.dropdowns).includes(true);
-        return (
-            <div className={`demo-wrapper ${props.loaded ? 'demo-wrapper-loaded' : ''}`}>
-                <GlobalHeader curSection={HeaderSection.Demo} />
-                <iframe
-                    className={`demo ${hasOpenDropdown ? 'demo-inactive' : ''}`}
-                    src={demoSrc}
-                    onLoad={() => props.dispatchLoad()}
-                    ref={(el: HTMLIFrameElement) => {
-                        if (el) this.iframe = el;
-                    }}
-                ></iframe>
-                {!props.loaded ? (
-                    <div className="demo-loading">
-                        <span className="fas fa-spinner fa-spin" />
-                    </div>
-                ) : (
-                    <></>
-                )}
-            </div>
-        );
-    }
-}
+    const hasOpenDropdown = Object.values(props.headerState.dropdowns).includes(true);
+    return (
+        <div className={`demo-wrapper ${props.loaded ? 'demo-wrapper-loaded' : ''}`}>
+            <GlobalHeader curSection={HeaderSection.Demo} />
+            <iframe
+                className={`demo ${hasOpenDropdown ? 'demo-inactive' : ''}`}
+                src={DEMO_URL}
+                onLoad={() => props.dispatchLoad()}
+                ref={iframeRef}
+            ></iframe>
+            {!props.loaded ? (
+                <div className="demo-loading">
+                    <span className="fas fa-spinner fa-spin" />
+                </div>
+            ) : (
+                <></>
+            )}
+        </div>
+    );
+};
 
 export interface DemoState {
     readonly loaded: boolean;
@@ -79,7 +72,7 @@ export const demoReducer: Reducer<DemoState> = (state = initDemoState, action) =
     return state;
 };
 
-const DemoPageConnected = connect<DemoStateProps, DemoDispatchProps, {}, RootState>(
+const DemoPage = connect<DemoStateProps, DemoDispatchProps, {}, RootState>(
     (state) => ({
         loaded: state.demoState.loaded,
         headerState: state.headerState,
@@ -88,6 +81,6 @@ const DemoPageConnected = connect<DemoStateProps, DemoDispatchProps, {}, RootSta
         dispatchInit: () => dispatch({ type: DemoActionType.Init }),
         dispatchLoad: () => dispatch({ type: DemoActionType.Load }),
     })
-)(DemoPage);
+)(DempPageFC);
 
-export default DemoPageConnected;
+export default DemoPage;
