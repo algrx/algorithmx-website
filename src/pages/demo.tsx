@@ -26,7 +26,10 @@ interface DemoDispatchProps {
 export const DempPageFC: React.FC<DemoStateProps & DemoDispatchProps> = (props) => {
     const iframeRef = React.useRef<HTMLIFrameElement>(null);
     React.useEffect(() => {
-        props.dispatchInit();
+        if (!props.loaded) {
+            props.dispatchInit();
+            setTimeout(() => props.dispatchLoad(), 500);
+        }
 
         return () => {
             if (!iframeRef.current) return;
