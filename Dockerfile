@@ -1,5 +1,6 @@
 # === install dependencies ===
-FROM node:11 as install
-COPY . /app
+FROM node:11 as setup
 WORKDIR /app
+
+COPY . ./
 RUN npm ci

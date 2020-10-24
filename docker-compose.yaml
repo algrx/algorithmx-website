@@ -3,7 +3,7 @@ services:
     build:
         build:
             context: .
-            target: install
+            target: setup
         volumes:
             - './public:/app/public'
         image: algorithmx-website-build
