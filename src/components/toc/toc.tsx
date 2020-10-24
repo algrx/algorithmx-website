@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'gatsby';
 
 import * as state from '../../state/toc';
+import { TocContentsData, TocEntryType, TocEntryLink } from './paths';
+
 import './toc.scss';
 import '../utils.scss';
-import { TocContentsData, TocEntryType, TocEntryLink } from './paths';
 
 type TocProps = state.TocProps &
     state.TocDispatch & {

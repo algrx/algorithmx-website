@@ -11,7 +11,7 @@ interface FullPageProps extends React.Props<unknown> {
     readonly pLangBar: boolean;
 }
 
-export const FullPage: React.FC<FullPageProps> = (props) => {
+export const FullPageTemplate: React.FC<FullPageProps> = (props) => {
     return (
         <>
             <GlobalHeader curSection={props.section}>

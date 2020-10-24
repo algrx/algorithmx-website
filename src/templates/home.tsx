@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FullPage } from './fullpage';
+import { FullPageTemplate } from './fullpage';
 import { NodeProps, MarkdownNode } from './utils';
 import { HeaderSection } from '../components/header';
 import { APIContent } from '../components/api/content';
@@ -14,14 +14,14 @@ export const query = graphql`
     }
 `;
 
-type HomePageProps = NodeProps<'markdownRemark', MarkdownNode<{}>>;
+type HomeProps = NodeProps<'markdownRemark', MarkdownNode<{}>>;
 
-const HomePage: React.FC<HomePageProps> = (props) => {
+const HomeTemplate: React.FC<HomeProps> = (props) => {
     const post = props.data.markdownRemark;
     return (
-        <FullPage section={HeaderSection.Home} pLangBar={true}>
+        <FullPageTemplate section={HeaderSection.Home} pLangBar={true}>
             <APIContent rawHtml={post.html} />
-        </FullPage>
+        </FullPageTemplate>
     );
 };
-export default HomePage;
+export default HomeTemplate;

@@ -9,9 +9,8 @@ import { TocConnected } from '../components/toc/toc';
 import { TocJson, contentsFromJson, gqlTocJsonFragment } from '../components/toc/paths';
 import { APIPageFrontmatter, APIPage, gqlAPIFrontmatterFragment } from '../components/api/page';
 import './api.scss';
-import '../components/page.scss';
 
-type ApiProps = NodeProps<'markdownRemark', MarkdownNode<APIPageFrontmatter>> &
+type APIProps = NodeProps<'markdownRemark', MarkdownNode<APIPageFrontmatter>> &
     NodeProps<
         'file',
         {
@@ -56,7 +55,7 @@ export const queryMarkdown = graphql`
     }
 `;
 
-export const ApiPage: React.FC<ApiProps> = (props) => {
+export const APITemplate: React.FC<APIProps> = (props) => {
     const post = props.data.markdownRemark;
 
     const tocPath = props.data.markdownRemark.fields.slug;
@@ -83,4 +82,4 @@ export const ApiPage: React.FC<ApiProps> = (props) => {
         </>
     );
 };
-export default ApiPage;
+export default APITemplate;
