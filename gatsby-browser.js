@@ -1,1 +1,1 @@
-exports.wrapRootElement = require('./src/gatsby/wrapRedux').wrapRootElement;
+exports.wrapRootElement = require('./src/gatsby/wrap-redux').wrapRootElement;

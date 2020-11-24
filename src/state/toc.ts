@@ -1,5 +1,5 @@
 import { Action, Dispatch, AnyAction, Reducer } from 'redux';
-import { RootState } from './state';
+import { RootState } from './root';
 
 export interface TocOpenDropdownState {
     readonly [k: string]: boolean;

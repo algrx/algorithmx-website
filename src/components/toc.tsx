@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'gatsby';
 
-import * as state from '../../state/toc';
-import { TocContentsData, TocEntryType, TocEntryLink } from './paths';
+import * as state from '../state/toc';
+import { TocContentsData, TocEntryType, TocEntryLink } from './toc-paths';
 
 import './toc.scss';
-import '../utils.scss';
+import './utils.scss';
 
 type TocProps = state.TocProps &
     state.TocDispatch & {

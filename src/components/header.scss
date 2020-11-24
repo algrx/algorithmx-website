@@ -38,7 +38,7 @@ header {
 }
 
 .header-btn {
-    width: 80px;
+    width: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,14 +88,14 @@ header {
     visibility: hidden;
     opacity: 0;
     height: 0px;
-    transition: visibility 0.15s, height 0.15s ease-in, opacity 0.15s ease-in;
+    transition: visibility 0.15s, height 0.2s ease-in, opacity 0.15s ease-in;
 }
 
 .header-dropdown-btn:hover .header-dropdown-menu {
     visibility: visible;
     opacity: 1;
     height: 80px;
-    transition: visibility 0.1s, height 0.1s ease-in, opacity 0.1s ease-in;
+    transition: visibility 0.1s, height 0.15s ease-in, opacity 0.1s ease-in;
 }
 
 $header-dropdown-inner-btn-height: 40px;

@@ -3,11 +3,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Prism from 'prismjs';
 import * as Babel from '@babel/standalone';
-import * as algorithmx from 'algorithmx';
+import { createCanvas, Canvas } from 'algorithmx';
 
-import { RootState } from '../../state/state';
-import { PLang } from '../../state/plang';
-import './codeexample.scss';
+import { RootState } from '../state/root';
+import { PLang } from '../state/plang';
+import './example-code.scss';
 
 export enum ExampleType {
     AlgxExample = 'algorithmx-example',
@@ -26,19 +26,21 @@ const PRISM_LANGS: { readonly [k in PLang]: Prism.Grammar } = {
     [PLang.Python]: Prism.languages.python,
 };
 
-const resetCanvas = (canvas: algorithmx.CanvasSelection, el: Element) => {
-    canvas.duration(0).eventQ(null).remove().cancelall().startall();
+const resetCanvas = (canvas: Canvas, el: Element) => {
+    canvas.duration(0).withQ(null).remove();
+    canvas.queues().clear().start();
+
     const size: [number, number] = [el.getBoundingClientRect().width, 200];
     canvas.duration(0).svgattr('width', '100%').size(size);
 };
 
 export const CodeExampleFC: React.FC<CodeExampleState & ExampleData> = (props) => {
-    const [canvas, setCanvas] = React.useState<algorithmx.CanvasSelection | null>(null);
+    const [canvas, setCanvas] = React.useState<Canvas | null>(null);
     const canvasRef = React.useRef<HTMLDivElement>(null);
     React.useEffect(() => {
-        if (canvas === null) setCanvas(algorithmx.canvas(canvasRef.current!));
+        if (canvas === null) setCanvas(createCanvas(canvasRef.current!));
         else {
-            resetCanvas(canvas!, canvasRef.current!);
+            resetCanvas(canvas, canvasRef.current!);
             jsCodeFunction(canvas);
         }
     });

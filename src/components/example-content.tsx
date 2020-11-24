@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { extractJsonFromHtml } from '../contentUtils';
-import { ExampleType, ExampleData, CodeExample } from './codeexample';
-import './page.scss';
+import { extractJsonFromHtml } from './content-utils';
+import { ExampleType, ExampleData, CodeExample } from './example-code';
+import './example-page.scss';
 
-export const APIContent: React.FC<{ readonly rawHtml: string }> = (props) => {
+export const ExampleContent: React.FC<{ readonly rawHtml: string }> = (props) => {
     const htmlData = extractJsonFromHtml(props.rawHtml);
     return (
         <>

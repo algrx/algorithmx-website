@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Reducer, Action, AnyAction } from 'redux';
-import { RootState } from '../state/state';
+import { RootState } from '../state/root';
 import { Link } from 'gatsby';
 
 const Logo = require('../assets/logo.svg');
@@ -11,7 +11,7 @@ import './utils.scss';
 
 export enum HeaderSection {
     Home = 'home',
-    API = 'api',
+    Examples = 'examples',
     Docs = 'docs',
     Demo = 'demo',
 }
@@ -60,9 +60,9 @@ const Header: React.FC<HeaderOwnProps & HeaderDispatchProps> = (props) => (
                 <HeaderBtn {...props} text="HOME" link="/" section={HeaderSection.Home} />
                 <HeaderBtn
                     {...props}
-                    text="API"
-                    link="/api/Selection/add"
-                    section={HeaderSection.API}
+                    text="EXAMPLES"
+                    link="/examples/element/add"
+                    section={HeaderSection.Examples}
                 />
                 <div
                     className="header-btn header-dropdown-btn"

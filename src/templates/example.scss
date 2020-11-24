@@ -1,19 +1,19 @@
-@import '../components/api/page.scss';
+@import '../components/example-page.scss';
 @import '../components/header.scss';
-@import '../components/plangbar.scss';
-@import '../components/toc/toc.scss';
+@import '../components/language-bar.scss';
+@import '../components/toc.scss';
 @import '../components/variables.scss';
 
-$toc-width: 200px;
+$toc-width: 220px;
 
-.api-container {
+.example-container {
     min-height: 100%;
     position: absolute;
     box-sizing: border-box;
     padding-top: $header-height + $language-bar-height;
 }
 
-.api-toc-container {
+.example-toc-container {
     height: 100%;
     width: $toc-width;
     position: fixed;
@@ -27,7 +27,7 @@ $toc-width: 200px;
     padding-bottom: 30px;
 }
 
-.api-page-container {
+.example-page-container {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -41,14 +41,14 @@ $toc-width: 200px;
     justify-content: center;
 }
 
-@media only screen and (max-width: $api-page-width + $toc-width + 16px) {
-    .api-page-container {
+@media only screen and (max-width: $example-page-width + $toc-width + 16px) {
+    .example-page-container {
         justify-content: flex-start;
     }
 }
 
 @media only screen and (max-width: $min-width) {
-    .api-toc-container {
+    .example-toc-container {
         width: 100%;
         height: auto;
         position: relative;
@@ -56,7 +56,7 @@ $toc-width: 200px;
         border-right: 0px;
         margin-bottom: 30px;
     }
-    .api-page-container {
+    .example-page-container {
         padding-top: 0px;
         padding-left: 0px;
     }

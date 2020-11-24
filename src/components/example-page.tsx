@@ -2,27 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { graphql } from 'gatsby';
 
-import { PLang, PLangName } from '../../state/plang';
-import { APIContent } from './content';
-import { RootState } from '../../state/state';
+import { ExampleContent } from './example-content';
+import { PLang, PLangName } from '../state/plang';
+import { RootState } from '../state/root';
 import './page.scss';
 
-export interface APIPageFrontmatter {
+export interface ExampleFrontmatter {
     readonly title: string;
     readonly docs: ReadonlyArray<string>;
 }
 
-export interface APIPageState {
+export interface ExamplePageState {
     readonly lang: PLang;
 }
 
-export interface APIPageProps extends React.Props<unknown> {
-    readonly frontmatter: APIPageFrontmatter;
+export interface ExamplePageProps extends React.Props<unknown> {
+    readonly frontmatter: ExampleFrontmatter;
     readonly rawHtml: string;
 }
 
-export const gqlAPIFrontmatterFragment = () => graphql`
-    fragment ApiFrontmatterFragment on MarkdownRemark {
+export const gqlExampleFrontmatterFragment = () => graphql`
+    fragment ExampleFrontmatterFragment on MarkdownRemark {
         frontmatter {
             title
             docs
@@ -30,9 +30,9 @@ export const gqlAPIFrontmatterFragment = () => graphql`
     }
 `;
 
-const APIDocLinks: React.FC<APIPageProps & APIPageState> = (props) => {
+const ExampleDocLinks: React.FC<ExamplePageProps & ExamplePageState> = (props) => {
     return (
-        <div className="api-doc-links">
+        <div className="example-doc-links">
             {props.frontmatter.docs.map((docLink, i) => {
                 const [docLinkClass, docLinkMethod] = docLink.split('.');
 
@@ -46,10 +46,10 @@ const APIDocLinks: React.FC<APIPageProps & APIPageState> = (props) => {
                 };
 
                 return (
-                    <div key={i} className="api-doc-link">
-                        <span className="api-doc-link-title">{docLink}</span>
-                        <a href={docUrls[props.lang]} className="api-doc-link-text">
-                            <span className="fas fa-book-open api-doc-link-icon" />
+                    <div key={i} className="example-doc-link">
+                        <span className="example-doc-link-title">{docLink}</span>
+                        <a href={docUrls[props.lang]} className="example-doc-link-text">
+                            <span className="fas fa-book-open example-doc-link-icon" />
                             {`${PLangName[props.lang]} Docs`}
                         </a>
                     </div>
@@ -59,16 +59,16 @@ const APIDocLinks: React.FC<APIPageProps & APIPageState> = (props) => {
     );
 };
 
-const APIPageFC: React.FC<APIPageProps & APIPageState> = (props) => {
+const ExamplePageFC: React.FC<ExamplePageProps & ExamplePageState> = (props) => {
     return (
-        <div className="api-page">
+        <div className="example-page">
             <h1>{props.frontmatter.title}</h1>
-            <APIDocLinks {...props} />
-            <APIContent rawHtml={props.rawHtml} />
+            <ExampleDocLinks {...props} />
+            <ExampleContent rawHtml={props.rawHtml} />
         </div>
     );
 };
 
-export const APIPage = connect<APIPageState, APIPageProps, {}, RootState>((state) => ({
+export const ExamplePage = connect<ExamplePageState, ExamplePageProps, {}, RootState>((state) => ({
     lang: state.pLang,
-}))(APIPageFC);
+}))(ExamplePageFC);

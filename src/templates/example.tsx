@@ -4,13 +4,17 @@ import { graphql } from 'gatsby';
 import { GlobalHeader } from './global';
 import { NodeProps, EdgeNodeProps, MarkdownNode } from './utils';
 import { HeaderSection } from '../components/header';
-import { PLangBarConnected } from '../components/plangbar';
-import { TocConnected } from '../components/toc/toc';
-import { TocJson, contentsFromJson, gqlTocJsonFragment } from '../components/toc/paths';
-import { APIPageFrontmatter, APIPage, gqlAPIFrontmatterFragment } from '../components/api/page';
-import './api.scss';
+import { PLangBar } from '../components/language-bar';
+import { TocConnected } from '../components/toc';
+import { TocJson, contentsFromJson, gqlTocJsonFragment } from '../components/toc-paths';
+import {
+    ExampleFrontmatter,
+    ExamplePage,
+    gqlExampleFrontmatterFragment,
+} from '../components/example-page';
+import './example.scss';
 
-type APIProps = NodeProps<'markdownRemark', MarkdownNode<APIPageFrontmatter>> &
+type ExampleProps = NodeProps<'markdownRemark', MarkdownNode<ExampleFrontmatter>> &
     NodeProps<
         'file',
         {
@@ -25,7 +29,7 @@ type APIProps = NodeProps<'markdownRemark', MarkdownNode<APIPageFrontmatter>> &
     >;
 
 gqlTocJsonFragment();
-gqlAPIFrontmatterFragment();
+gqlExampleFrontmatterFragment();
 export const queryMarkdown = graphql`
     query($slug: String!) {
         markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -33,14 +37,14 @@ export const queryMarkdown = graphql`
             fields {
                 slug
             }
-            ...ApiFrontmatterFragment
+            ...ExampleFrontmatterFragment
         }
-        file(relativePath: { eq: "pages/api/toc.json" }) {
+        file(relativePath: { eq: "pages/examples/toc.json" }) {
             childJsonData {
                 ...TocJsonFragment
             }
         }
-        allMarkdownRemark(filter: { fields: { slug: { regex: "^/api/" } } }) {
+        allMarkdownRemark(filter: { fields: { slug: { regex: "^/examples/" } } }) {
             edges {
                 node {
                     fields {
@@ -55,7 +59,7 @@ export const queryMarkdown = graphql`
     }
 `;
 
-export const APITemplate: React.FC<APIProps> = (props) => {
+export const ExampleTemplate: React.FC<ExampleProps> = (props) => {
     const post = props.data.markdownRemark;
 
     const tocPath = props.data.markdownRemark.fields.slug;
@@ -63,23 +67,23 @@ export const APITemplate: React.FC<APIProps> = (props) => {
         return { ...result, [edge.node.fields.slug]: edge.node.frontmatter.title };
     }, {} as { readonly [k: string]: string });
 
-    const tocData = contentsFromJson('/api/', props.data.file.childJsonData, tocPathNames);
+    const tocData = contentsFromJson('/examples/', props.data.file.childJsonData, tocPathNames);
 
     return (
         <>
-            <GlobalHeader curSection={HeaderSection.API}>
-                <PLangBarConnected />
+            <GlobalHeader curSection={HeaderSection.Examples}>
+                <PLangBar />
             </GlobalHeader>
-            <div className="api-toc-container">
+            <div className="example-toc-container">
                 <TocConnected curPath={tocPath} contents={tocData} />
             </div>
-            <div className="api-page-container">
-                <APIPage frontmatter={post.frontmatter} rawHtml={post.html}>
+            <div className="example-page-container">
+                <ExamplePage frontmatter={post.frontmatter} rawHtml={post.html}>
                     <h1>{post.frontmatter.title}</h1>
                     <div dangerouslySetInnerHTML={{ __html: post.html }} />
-                </APIPage>
+                </ExamplePage>
             </div>
         </>
     );
 };
-export default APITemplate;
+export default ExampleTemplate;

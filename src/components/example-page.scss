@@ -1,10 +1,10 @@
-@import '../variables.scss';
+@import './variables.scss';
 
-$api-page-width: 620px;
+$example-page-width: 620px;
 
-.api-page {
-    width: $api-page-width;
-    min-width: $api-page-width;
+.example-page {
+    width: $example-page-width;
+    min-width: $example-page-width;
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
@@ -12,28 +12,28 @@ $api-page-width: 620px;
     box-sizing: border-box;
 }
 
-.api-title {
+.example-title {
     font: 300 2em $font-primary;
 }
 
-.api-doc-links {
+.example-doc-links {
     margin-top: -10px;
     margin-bottom: 30px;
 }
 
-.api-doc-link {
+.example-doc-link {
     width: 100%;
     padding-bottom: 5px;
 }
 
-.api-doc-link-title {
+.example-doc-link-title {
     font: 1em $font-mono;
     margin-right: 10px;
     color: $color-very-dark-gray;
 }
-.api-doc-link-text {
+.example-doc-link-text {
     font: 500 0.8em $font-primary;
 }
-.api-doc-link-icon {
+.example-doc-link-icon {
     margin-right: 5px;
 }

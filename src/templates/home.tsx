@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { FullPageTemplate } from './fullpage';
+import { FullPageTemplate } from './full-page';
 import { NodeProps, MarkdownNode } from './utils';
 import { HeaderSection } from '../components/header';
-import { APIContent } from '../components/api/content';
+import { ExampleContent } from '../components/example-content';
 import { graphql } from 'gatsby';
 
 export const query = graphql`
@@ -20,7 +20,7 @@ const HomeTemplate: React.FC<HomeProps> = (props) => {
     const post = props.data.markdownRemark;
     return (
         <FullPageTemplate section={HeaderSection.Home} pLangBar={true}>
-            <APIContent rawHtml={post.html} />
+            <ExampleContent rawHtml={post.html} />
         </FullPageTemplate>
     );
 };
