@@ -21,16 +21,16 @@ code:
   js: |
     canvas.nodes([1, 2, 3, 4, 5, 6, 7]).add()
     canvas.edges([[1, 2], [2, 3], [3, 4], [4, 5],
-      [5, 6], [6, 7], [1, 3], [2, 4], [2, 7]]).add()
+        [5, 6], [6, 7], [1, 3], [2, 4], [2, 7]]).add()
     
     for (let i = 1; i < 8; i++) {
-      canvas.pause(0.5)
-      canvas.node(i).color('green').highlight().size('1.25x')
-      
-      if (i < 8) {
         canvas.pause(0.5)
-        canvas.edge([i, i+1]).traverse().color('green')
-      }
+        canvas.node(i).color('green').highlight().size('1.25x')
+        
+        if (i < 7) {
+            canvas.pause(0.5)
+            canvas.edge([i, i+1]).traverse('green')
+        }
     }
   python: |
     canvas.nodes(range(1, 8)).add()
@@ -41,9 +41,9 @@ code:
         canvas.pause(0.5)
         canvas.node(i).color('green').highlight().size('1.25x')
         
-        if i < 8:
+        if i < 7:
             canvas.pause(0.5)
-            canvas.edge((i, i+1)).traverse().color('green')
+            canvas.edge((i, i+1)).traverse('green')
 </data>
 
 ## Credits

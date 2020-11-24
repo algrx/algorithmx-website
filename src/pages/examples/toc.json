@@ -1,0 +1,34 @@
+{
+    "entries": [
+        {
+            "type": "folder",
+            "name": "Element",
+            "path": "element/"
+        },
+        {
+            "type": "folder",
+            "name": "Canvas",
+            "path": "canvas/"
+        },
+        {
+            "type": "folder",
+            "name": "Node",
+            "path": "node/"
+        },
+        {
+            "type": "folder",
+            "name": "Edge",
+            "path": "edge/"
+        },
+        {
+            "type": "folder",
+            "name": "Label",
+            "path": "label/"
+        },
+        {
+            "type": "folder",
+            "name": "Queue",
+            "path": "queue/"
+        }
+    ]
+}

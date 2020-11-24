@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Reducer, Action } from 'redux';
 
-import { RootState } from '../state/state';
+import { RootState } from '../state/root';
 import { GlobalHeader } from '../templates/global';
 import { HeaderSection, HeaderState } from '../components/header';
 import './demo.scss';
