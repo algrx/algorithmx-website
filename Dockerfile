@@ -1,5 +1,5 @@
 # === install dependencies ===
-FROM node:11 as setup
+FROM node:14 as setup
 WORKDIR /app
 
 COPY . ./

@@ -72,21 +72,13 @@ const Header: React.FC<HeaderOwnProps & HeaderDispatchProps> = (props) => (
                     <span>DOCS</span>
                     <div className="header-dropdown-menu header-dropdown-menu-docs">
                         <div className="header-dropdown-inner-btn">
-                            <a
-                                href="https://algrx.github.io/algorithmx/docs/js/"
-                                target="_blank"
-                                className="a-btn"
-                            >
+                            <a href="/docs/js/" target="_blank" className="a-btn">
                                 <span className="fab fa-js header-dropdown-inner-icon" />
                                 JavaScript
                             </a>
                         </div>
                         <div className="header-dropdown-inner-btn">
-                            <a
-                                href="https://algrx.github.io/algorithmx/docs/python"
-                                target="_blank"
-                                className="a-btn"
-                            >
+                            <a href="/docs/python/" target="_blank" className="a-btn">
                                 <span className="fab fa-python header-dropdown-inner-icon" />
                                 Python
                             </a>

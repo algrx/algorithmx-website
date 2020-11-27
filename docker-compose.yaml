@@ -7,4 +7,6 @@ services:
         volumes:
             - './public:/app/public'
         image: algorithmx-website-build
-        command: npm run build
+        command: bash -c "
+            npm run typecheck
+            && npm run build"
