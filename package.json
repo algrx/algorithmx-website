@@ -17,7 +17,7 @@
     "dependencies": {
         "@babel/standalone": "7.12.7",
         "@fortawesome/fontawesome-free": "5.15.1",
-        "algorithmx": "^2.0.0",
+        "algorithmx": "^2.0.1",
         "babel-plugin-prismjs": "2.0.1",
         "babel-preset-gatsby": "0.7.0",
         "domino": "2.1.6",
