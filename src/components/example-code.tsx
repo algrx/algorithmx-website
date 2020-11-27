@@ -17,7 +17,7 @@ export interface ExampleData {
     readonly code: { readonly [k in PLang]: string };
 }
 
-export interface CodeExampleState {
+export interface ExampleCodeState {
     readonly pLang: PLang;
 }
 
@@ -34,7 +34,7 @@ const resetCanvas = (canvas: Canvas, el: Element) => {
     canvas.duration(0).svgattr('width', '100%').size(size);
 };
 
-export const CodeExampleFC: React.FC<CodeExampleState & ExampleData> = (props) => {
+export const ExampleCodeFC: React.FC<ExampleCodeState & ExampleData> = (props) => {
     const [canvas, setCanvas] = React.useState<Canvas | null>(null);
     const canvasRef = React.useRef<HTMLDivElement>(null);
     React.useEffect(() => {
@@ -93,6 +93,6 @@ export const CodeExampleFC: React.FC<CodeExampleState & ExampleData> = (props) =
     );
 };
 
-export const CodeExample = connect<CodeExampleState, {}, {}, RootState>((state) => ({
+export const ExampleCode = connect<ExampleCodeState, {}, {}, RootState>((state) => ({
     pLang: state.pLang,
-}))(CodeExampleFC);
+}))(ExampleCodeFC);
