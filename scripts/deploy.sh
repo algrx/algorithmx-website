@@ -1,6 +1,6 @@
 # clone and merge
 git clone "https://${DEPLOY_GITHUB_TOKEN}@github.com/algrx/algrx.github.io.git" website
-find website ! -name docs -delete
+find website/* ! -name docs -delete
 cp -r public/* website/
 cd website
 
