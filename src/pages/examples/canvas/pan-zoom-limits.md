@@ -3,6 +3,8 @@ title: 'Pan & Zoom Limits'
 docs: ['Canvas.panlimit', 'Canvas.zoomlimit', 'Canvas.zoomtoggle']
 ---
 
+Note that you need to hold down 'ctrl' to zoom.
+
 Restrict panning and zooming to a box the size of the canvas:
 
 <data type='yaml'>

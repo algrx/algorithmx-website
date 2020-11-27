@@ -30,8 +30,11 @@ const resetCanvas = (canvas: Canvas, el: Element) => {
     canvas.duration(0).withQ(null).remove();
     canvas.queues().clear().start();
 
-    const size: [number, number] = [el.getBoundingClientRect().width, 200];
-    canvas.duration(0).svgattr('width', '100%').size(size);
+    canvas.duration(0).attrs({
+        svgattrs: { width: '100%' },
+        size: [el.getBoundingClientRect().width, 200],
+        zoomtoggle: true,
+    })
 };
 
 export const ExampleCodeFC: React.FC<ExampleCodeState & ExampleData> = (props) => {
